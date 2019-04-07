@@ -1,4 +1,6 @@
 %% AOC 2017 solutions @forht 
+-module(day1).
+-compile(export_all).
 
 repeated(List = [H | _]) ->
     repeated(List, H, []).
@@ -12,7 +14,7 @@ repeated([_, H | T], First, Acc) ->
     repeated([H | T], First, Acc).
 
 main(_) ->
-    {ok, Bin} = file:read_file("input1"),
+    {ok, Bin} = file:read_file("../input1"),
     CodeList = string:trim(erlang:binary_to_list(Bin)),
     DList = lists:map(fun(C) -> C - $0 end, CodeList),
     Repeated = repeated(DList),

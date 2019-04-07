@@ -1,7 +1,6 @@
 -module(day2p2).
 -compile(export_all).
 
-
 find_divisor(_, []) ->
     false;
 find_divisor(N, [H|_]) when N rem H =:= 0 ->
@@ -29,7 +28,7 @@ div_sum(F, Acc) ->
     end.
 
 main() ->
-    {ok, F} = file:open("input2", read),
+    {ok, F} = file:open("../input2", read),
     io:format("~w", [div_sum(F, 0)]),
     file:close(F).
     
