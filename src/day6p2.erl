@@ -36,4 +36,3 @@ main(_) ->
     {ok, Bin} = file:read_file("../input6"),
     Input = [erlang:binary_to_integer(N) || N <- string:lexemes(Bin, "\t\n")],
     count_cycles(Input, #{}, 0).
-    
