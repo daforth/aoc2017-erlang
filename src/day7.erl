@@ -4,9 +4,9 @@
 parse_line(L) ->
     [H | T] = string:lexemes(L, "->"),
     [N, WW] = string:lexemes(H, " "),
-    Name = erlang:binary_to_atom(N, latin1),
+    Name = erlang:binary_to_list(N),
     Weight = erlang:binary_to_integer(hd(string:lexemes(WW, "() "))),
-    Children = [erlang:binary_to_atom(C, latin1) || C <- string:lexemes(T, ", ")],
+    Children = [erlang:binary_to_list(C) || C <- string:lexemes(T, ", ")],
     {Name, Weight, Children}.
 
 count_nodes(K, Map) ->
