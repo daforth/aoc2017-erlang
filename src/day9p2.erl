@@ -1,7 +1,7 @@
 -module(day9p2).
 -compile(export_all).
 
-day9p2([$!, _ | Rest], State, Sum) -> day9p2(Rest, State, Sum);
+day9p2([$!, _ | Rest], garbage, Sum) -> day9p2(Rest, garbage, Sum);
 day9p2([$> | Rest], garbage, Sum) -> day9p2(Rest, normal, Sum);
 day9p2([_ | Rest], garbage, Sum) -> day9p2(Rest, garbage, Sum + 1);
 day9p2([$< | Rest], normal, Sum) -> day9p2(Rest, garbage, Sum);
