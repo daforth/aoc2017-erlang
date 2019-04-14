@@ -15,10 +15,8 @@ day8p2([{Var1, Op, N1, Var2, Cmp, N2}|R], Env, Max) ->
         true ->
             Old = maps:get(Var1, Env, 0),
             New = case Op of
-                      "inc" ->
-                          Old + N1;
-                      "dec" ->
-                          Old - N1
+                      "inc" -> Old + N1;
+                      "dec" -> Old - N1
                   end,
             day8(R, Env#{Var1 => New}, lists:max([Max, New]))
     end;
