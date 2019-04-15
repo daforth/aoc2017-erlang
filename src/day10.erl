@@ -10,17 +10,20 @@ take_n(String, 0, Acc) -> {Acc, String};
 take_n({Prev, [H|Next]}, Len, Acc) -> take_n({Prev, Next}, Len - 1, [H|Acc]);
 take_n({Prev, []}, Len, Acc) -> take_n({[], lists:reverse(Prev)}, Len, Acc).
 
+
 put_back([], String) -> String;
-put_back([{_, Val}|T], {Prev, Next = [{0, _} | _]}) ->
-    put_back(T, {Prev, [{255, Val} | Next]});
-put_back([{_, Val}|T], {Prev, Next = [{Pos, _} | _]}) ->
-    put_back(T, {Prev, [{Pos - 1, Val} | Next]});
-put_back(Knot, {Prev, []}) ->
-    put_back(Knot, {[], lists:reverse(Prev)}).
+put_back([H|T], {Prev, Next}) -> put_back(T, {Prev, [H | Next]}).
 
 reverse_n(String, Len) ->
     {Knot, RestString}  = take_n(String, Len),
-    put_back(lists:reverse(Knot), RestString).
+    %% Unzipping the values and positions in order to have the valules
+    %% reversed while keeping the positions in the same order.
+    {KPos, Kval} = lists:foldl(
+                     fun({Pos, Val}, {APos, Aval}) ->
+                             {[Pos | APos], [Val | Aval]} end,
+                     {[], []}, Knot),
+    RKnot = lists:zip(lists:reverse(KPos), Kval),
+    put_back(RKnot, RestString).
 
 result({_, [{0, Val1} , {1, Val2} | _]}) -> Val1 * Val2;
 result({Prev, [{0, Val1}]}) -> Val1 * element(2, lists:last(Prev));
