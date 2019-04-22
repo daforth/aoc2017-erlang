@@ -28,7 +28,7 @@ div_sum(F, Acc) ->
     end.
 
 main() ->
-    {ok, F} = file:open("../input2", read),
+    {ok, F} = file:open("../input02", read),
     io:format("~w", [div_sum(F, 0)]),
     file:close(F).
     

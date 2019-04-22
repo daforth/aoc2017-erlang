@@ -24,7 +24,7 @@ find_root(_Keys = [{K, _, _} | Rest], Map, Size) ->
     end.
 
 main(_) ->
-    {ok, Bin} = file:read_file("../input7"),
+    {ok, Bin} = file:read_file("../input07"),
     Entries = [parse_line(L) || L <- string:lexemes(Bin, "\n")],
     {TMap, Size} = lists:foldl(fun({N,W,C}, {Map, Size}) ->
                                        {Map#{N => {W, C}}, Size+1}

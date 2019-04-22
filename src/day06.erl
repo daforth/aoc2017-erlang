@@ -33,7 +33,7 @@ count_cycles(Banks, Seen, Cycles) ->
     end.
 
 main(_) ->
-    {ok, Bin} = file:read_file("../input6"),
+    {ok, Bin} = file:read_file("../input06"),
     Input = [erlang:binary_to_integer(N) || N <- string:lexemes(Bin, "\t\n")],
     count_cycles(Input, #{}, 0).
     

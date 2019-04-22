@@ -11,6 +11,6 @@ day9([_ | Rest], normal, Level, Sum) -> day9(Rest, normal, Level, Sum);
 day9([], normal, 0, Sum) -> Sum.
 
 main(_) ->
-    {ok, Bin} = file:read_file("../input9"),
+    {ok, Bin} = file:read_file("../input09"),
     String = binary_to_list(Bin),
     day9(String, normal, 0, 0).

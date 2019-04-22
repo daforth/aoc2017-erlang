@@ -27,7 +27,7 @@ checksum(F, Acc) ->
     end.
 
 main() ->
-    {ok, F} = file:open("input2", read),
+    {ok, F} = file:open("input02", read),
     io:format("~w", [checksum(F, 0)]),
     file:close(F).
     

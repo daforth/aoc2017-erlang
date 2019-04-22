@@ -17,6 +17,6 @@ is_valid(Pass) ->
     not has_dup(lists:sort(Pass)).
 
 main(_) ->
-    {ok, Bin} = file:read_file("../input4"),
+    {ok, Bin} = file:read_file("../input04"),
     Lines = [string:lexemes(L, " ") || L <- string:lexemes(Bin, "\n")],
     length([L || L <- Lines, is_valid(L)]).

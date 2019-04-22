@@ -12,7 +12,7 @@ steps_to_exit(Array, I, Size, Steps) ->
     steps_to_exit(NArr, I+J, Size, Steps+1).
 
 main(_) ->
-    {ok, Bin} = file:read_file("../input5"),
+    {ok, Bin} = file:read_file("../input05"),
     Lines = string:lexemes(Bin, "\n"),
     LIst = [ erlang:binary_to_integer(L) || L <- Lines],
     steps_to_exit(array:from_list(LIst)).

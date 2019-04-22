@@ -3,7 +3,7 @@
 
 %% inspiration from day 4, part 1 of https://ferd.ca/advent-of-code-2017.html
 main(_) ->
-    {ok, Bin} = file:read_file("../input4"),
+    {ok, Bin} = file:read_file("../input04"),
     length([L || L <- string:lexemes(Bin, "\n"),
                 WL <- [string:lexemes(L, " ")],
                 SW <- [[lists:sort(erlang:binary_to_list(W)) || W <- WL]],
